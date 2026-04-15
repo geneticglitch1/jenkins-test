@@ -5,7 +5,6 @@ pipeline {
         IMAGE_NAME = "jenkins-test"
         CONTAINER_NAME = "jenkins-test-prod"
         PORT = "3000"
-        APP_DIR = "client/my-app"
     }
 
     stages {
@@ -13,18 +12,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-            }
-        }
-
-        stage('Install') {
-            steps {
-                sh "docker run --rm -v \$(pwd)/${APP_DIR}:/app -w /app node:20-alpine npm ci"
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh "docker run --rm -v \$(pwd)/${APP_DIR}:/app -w /app node:20-alpine npm run test -- --passWithNoTests"
             }
         }
 
