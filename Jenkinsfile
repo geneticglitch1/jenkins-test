@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "jenkins-test"
         CONTAINER_NAME = "jenkins-test-prod"
-        PORT = "3000"
+        PORT = "3456"
     }
 
     stages {
