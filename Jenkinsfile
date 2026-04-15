@@ -17,13 +17,13 @@ pipeline {
 
         stage('Install') {
             steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app node:20-alpine npm ci'
+                sh 'docker run --rm -v $(pwd)/${APP_DIR}:/app -w /app node:20-alpine npm ci'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app node:20-alpine npm run test -- --passWithNoTests'
+                sh 'docker run --rm -v $(pwd)/${APP_DIR}:/app -w /app node:20-alpine npm run test -- --passWithNoTests'
             }
         }
 
